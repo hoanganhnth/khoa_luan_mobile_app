@@ -106,6 +106,9 @@ class DeviceUtils {
     return Platform.isAndroid;
   }
 
+  static double getPaddingBottom(BuildContext context) {
+    return MediaQuery.of(context).padding.bottom;
+  }
   // static void launchUrl(String url) async {
   //   if (await canLaunchUrlString(url)) {
   //     await launchUrlString(url);

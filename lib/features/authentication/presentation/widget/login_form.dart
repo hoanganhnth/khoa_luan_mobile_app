@@ -94,7 +94,7 @@ ValueNotifier<bool>  rememberPassword = ValueNotifier(false);
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () {
-                    Modular.to.pushNamed("/home");
+                    Modular.to.pushNamed("/home/");
                   },
                   child: const Text(StringConstants.signIn))),
           const SizedBox(

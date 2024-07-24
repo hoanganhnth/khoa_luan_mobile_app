@@ -1,5 +1,6 @@
 import 'package:app_flutter/navigate/module_navigate.dart';
 import 'package:app_flutter/share/base_component/app_toast/app_toast.dart';
+import 'package:app_flutter/share/utils/constants/app_constants.dart';
 import 'package:app_flutter/share/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(414, 890),
+      designSize: const Size(AppConstants.widthScreen, AppConstants.heightScreen),
       child: MaterialApp.router(
         title: 'Global jobs',
         theme: TAppTheme.lightTheme,
