@@ -1,3 +1,4 @@
+import 'package:app_flutter/features/main/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -10,11 +11,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final screen = [
-    Container(
-      color: Colors.grey,
-      width: double.infinity,
-      height: double.infinity,
-    ),
+    const HomeScreen(),
     Container(
       color: Colors.red,
       width: double.infinity,

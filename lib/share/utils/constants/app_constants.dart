@@ -1,4 +1,7 @@
 class AppConstants {
+  static const double widthScreen = 414;
+  static const double heightScreen = 890;
+
   /// http client header constants
   static String acceptLanguageKey = 'Accept-Language';
   static String authorisationKey = 'Authorization';

@@ -15,13 +15,13 @@ Widget imageFromNetWork(
           url,
           width: width,
           height: height,
-          fit: BoxFit.fill,
+          fit: fit ?? BoxFit.contain,
           color: color,
         )
       : CachedNetworkImage(
           imageUrl: url,
           width: width,
-          fit: fit ?? (fill == true ? BoxFit.fill : BoxFit.cover),
+          fit: fit ?? (fill == true ? BoxFit.fill : BoxFit.contain),
           height: height,
           placeholder: (context, url) => const Center(
               child: SizedBox(
@@ -50,14 +50,14 @@ Widget imageFromLocale({
           width: width,
           // color: color,
           height: height,
-          fit: fit ?? BoxFit.fill,
+          fit: fit ?? BoxFit.contain,
         )
       : Image.asset(
           url,
           width: width,
           color: color,
           height: height,
-          fit: fit ?? BoxFit.fill,
+          fit: fit ?? BoxFit.contain,
           opacity: opacity,
           gaplessPlayback: gaplessPlayback ?? false,
         );

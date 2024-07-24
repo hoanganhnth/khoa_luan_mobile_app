@@ -19,6 +19,7 @@ class ColorConstants {
   // Background Container colors
   static const Color lightContainer = Color(0xFFF6F6F6);
   static Color darkContainer = ColorConstants.white.withOpacity(0.1);
+  static const Color bgPrimary = Color(0xffD9F2FF);
 
   // Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);

@@ -1,6 +1,8 @@
 import 'package:app_flutter/features/authentication/presentation/screen/login_screen.dart';
 import 'package:app_flutter/features/authentication/presentation/screen/signup_sceen.dart';
-import 'package:app_flutter/features/main/main_screen.dart';
+import 'package:app_flutter/features/main/presentation/main_screen.dart';
+import 'package:app_flutter/features/main/presentation/screen/all_job_screen.dart';
+import 'package:app_flutter/features/main/presentation/screen/detail_job_screen.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
@@ -20,6 +22,11 @@ class AppModule extends Module {
     r.module('/home', module: HomeModule());
 
     r.module('/authentication', module: AuthenModule());
+    r.child('/detail_job',
+        child: (context) => DetailJobScreen(
+              jobModel: r.args.data["job_model"],
+            ));
+
     super.routes(r);
   }
 }
@@ -31,6 +38,10 @@ class HomeModule extends Module {
   @override
   void routes(r) {
     r.child('/', child: (context) => const MainScreen());
+    r.child('/see_all_job',
+        child: (context) => AllJobScreen(
+              listJobs: r.args.data["jobs"],
+            ));
   }
 }
 
