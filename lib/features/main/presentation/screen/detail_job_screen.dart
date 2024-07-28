@@ -314,9 +314,13 @@ class _DetailJobScreenState extends State<DetailJobScreen> {
                     if (!value) {
                       return const SizedBox();
                     }
-                    return Icon(Iconsax.arrow_left,
-                        color:
-                            dark ? ColorConstants.white : ColorConstants.black);
+                    return InkWell(
+                      onTap: () => Modular.to.pop(),
+                      child: Icon(Iconsax.arrow_left,
+                          color: dark
+                              ? ColorConstants.white
+                              : ColorConstants.black),
+                    );
                   },
                 ),
                 bottom: TTaBar(

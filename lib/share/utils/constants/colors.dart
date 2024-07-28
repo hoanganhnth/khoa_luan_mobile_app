@@ -15,6 +15,7 @@ class ColorConstants {
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF3F5FF);
+  static const Color cardBg = Color(0xffF2F2F2);
 
   // Background Container colors
   static const Color lightContainer = Color(0xFFF6F6F6);
@@ -45,7 +46,9 @@ class ColorConstants {
   static const Color lightGrey = Color(0xFFF9F9F9);
   static const Color white = Color(0xFFFFFFFF);
 
+  // Icon
+  static const Color iconColor = Color(0xfb64748B);
+
+  // divider
+  static const Color dividerColor = Color(0xfbF1F5F9);
 }
-
-
-

@@ -3,6 +3,8 @@ import 'package:app_flutter/features/authentication/presentation/screen/signup_s
 import 'package:app_flutter/features/main/presentation/main_screen.dart';
 import 'package:app_flutter/features/main/presentation/screen/all_job_screen.dart';
 import 'package:app_flutter/features/main/presentation/screen/detail_job_screen.dart';
+import 'package:app_flutter/features/profile/presentation/screen/info_profile_screen.dart';
+import 'package:app_flutter/features/profile/presentation/screen/profile_screen.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
@@ -22,6 +24,7 @@ class AppModule extends Module {
     r.module('/home', module: HomeModule());
 
     r.module('/authentication', module: AuthenModule());
+    r.module('/profile', module: ProfileModule());
     r.child('/detail_job',
         child: (context) => DetailJobScreen(
               jobModel: r.args.data["job_model"],
@@ -62,6 +65,27 @@ class AuthenModule extends Module {
     r.child(
       '/signUp',
       child: (context) => const SignupScreen(),
+    );
+  }
+}
+
+class ProfileModule extends Module {
+  @override
+  void binds(i) {}
+
+  // @override
+  // void exportedBinds(i) {
+  // }
+
+  @override
+  void routes(r) {
+    r.child(
+      '/',
+      child: (context) => const ProfileScreen(),
+    );
+    r.child(
+      '/infoProfile',
+      child: (context) => const InfoProfileScreen(),
     );
   }
 }

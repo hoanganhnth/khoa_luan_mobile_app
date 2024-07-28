@@ -42,5 +42,18 @@ class StringConstants {
   static const String addressCompany = "Địa chỉ công ty";
   static const String websiteCompany = "Website công ty";
   static const String introduceCompany = "Giới thiệu công ty";
+  static const String manageFindJob = "Quản lý tìm việc";
+  static const String jobApply = "Việc làm đã ứng tuyển";
+  static const String jobSave = "Việc làm đã lưu";
+  static const String jobSuit = "Việc làm phù hợp";
+  static const String companySave = "Công ty đang theo dõi";
+  static const String infoProfile = "Thông tin cá nhân";
+  static const String setting = "Cài đặt khác";
+  static const String changePassword = "Đổi mật khẩu";
+  static const String logout = "Đăng xuất";
+  static const String male = "Nam";
 
+  static const String female = "Nữ";
+
+  static const String other = "Khác";
 }
