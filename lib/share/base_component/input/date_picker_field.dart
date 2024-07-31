@@ -1,7 +1,9 @@
 import 'package:app_flutter/share/utils/constants/colors.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
+import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DatePickerField extends StatefulWidget {
@@ -64,7 +66,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 56,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(1000),
+            borderRadius: BorderRadius.circular(SizeConstants.inputFieldRadius.w),
             border: Border.all(color: ColorConstants.darkGrey),
           ),
           child: Row(

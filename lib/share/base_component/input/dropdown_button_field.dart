@@ -1,8 +1,10 @@
 import 'package:app_flutter/share/utils/constants/colors.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
+import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/device/device_utility.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter_svg/svg.dart';
 
@@ -26,7 +28,7 @@ class _DropdownButtonFieldState extends State<DropdownButtonField> {
       height: 56,
       padding: const EdgeInsets.only(left: 16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1000),
+        borderRadius: BorderRadius.circular(SizeConstants.inputFieldRadius.w),
         border: Border.all(color: ColorConstants.darkGrey),
       ),
       width: double.infinity,
@@ -60,7 +62,7 @@ class _DropdownButtonFieldState extends State<DropdownButtonField> {
               onChanged: widget.onChanged,
               buttonStyleData: ButtonStyleData(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1000),
+                    borderRadius: BorderRadius.circular(SizeConstants.inputFieldRadius.w),
                     color:
                         dark ? const Color(0xfb1B2537) : ColorConstants.white),
                 padding: const EdgeInsets.symmetric(horizontal: 16),

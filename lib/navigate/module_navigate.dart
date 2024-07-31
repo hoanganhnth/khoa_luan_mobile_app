@@ -2,6 +2,8 @@ import 'package:app_flutter/features/authentication/presentation/screen/login_sc
 import 'package:app_flutter/features/authentication/presentation/screen/signup_sceen.dart';
 import 'package:app_flutter/features/main/presentation/main_screen.dart';
 import 'package:app_flutter/features/main/presentation/screen/all_job_screen.dart';
+import 'package:app_flutter/features/main/presentation/screen/apply_job_screen.dart';
+import 'package:app_flutter/features/main/presentation/screen/apply_job_success.dart';
 import 'package:app_flutter/features/main/presentation/screen/detail_job_screen.dart';
 import 'package:app_flutter/features/profile/presentation/screen/info_profile_screen.dart';
 import 'package:app_flutter/features/profile/presentation/screen/profile_screen.dart';
@@ -29,6 +31,15 @@ class AppModule extends Module {
         child: (context) => DetailJobScreen(
               jobModel: r.args.data["job_model"],
             ));
+    r.child('/apply_job',
+        child: (context) => ApplyJobScreen(
+              jobId: r.args.data["job_id"],
+            ));
+            r.child('/success_apply',
+        child: (context) => const ApplyJobSuccess(
+              
+            ));
+
 
     super.routes(r);
   }

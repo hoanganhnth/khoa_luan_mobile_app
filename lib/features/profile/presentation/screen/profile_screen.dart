@@ -1,3 +1,4 @@
+import 'package:app_flutter/features/profile/presentation/widget/manage_job_item.dart';
 import 'package:app_flutter/features/profile/presentation/widget/setting_profile_row.dart';
 import 'package:app_flutter/share/utils/constants/colors.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
@@ -73,14 +74,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Text(
                           "Hoang Anh",
-                          style: Theme.of(context).textTheme.headlineSmall,
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           width: SizeConstants.md.w,
                         ),
                         Text(
                           "Mã ứng viên: 551550494",
-                          style: Theme.of(context).textTheme.titleMedium,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     )
@@ -101,73 +102,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: SizeConstants.sm.w,
                   ),
-                  GridView.builder(
+                  GridView(
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 4,
+
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: SizeConstants.gridViewSpacing,
-                        mainAxisSpacing: SizeConstants.gridViewSpacing,
-                        mainAxisExtent: 140.w
-                        ),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                SizeConstants.borderRadiusMd.w),
-                            color: ColorConstants.cardBg),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: SizeConstants.md.w,
-                            vertical: SizeConstants.md.w),
-                        // height: 60.w.w,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                padding: const EdgeInsets.all(SizeConstants.sm),
-                                decoration: BoxDecoration(
-                                    color: ColorConstants.white,
-                                    borderRadius: BorderRadius.circular(400.w)),
-                                child: SvgPicture.asset(
-                                  IconConstants.icLocation,
-                                  width: 25.w,
-                                  height: 25.w,
-                                  color: Theme.of(context).primaryColor,
-                                )),
-                            SizedBox(
-                              height: SizeConstants.md.w,
-                            ),
-                            Row(
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    StringConstants.manageFindJob,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: SizeConstants.md.w,
-                                ),
-                                Text(
-                                  "5",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                          color:
-                                              Theme.of(context).primaryColor),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    },
+                      crossAxisCount: 2,
+                      crossAxisSpacing: SizeConstants.gridViewSpacing.w,
+                      mainAxisSpacing: SizeConstants.gridViewSpacing.w,
+                      mainAxisExtent: 140.w
+                    ),
+                    children: const [
+                      ManageJobSettingItem(
+                        title: StringConstants.jobApply,
+                        icon: IconConstants.icJob,
+                        number: 5,
+                      ),
+                      ManageJobSettingItem(
+                        title: StringConstants.jobSave,
+                        icon: IconConstants.icBookmarkSetting,
+                        number: 5,
+                      ),
+                       ManageJobSettingItem(
+                        title: StringConstants.jobSuit,
+                        icon: IconConstants.icCheckCircle,
+                        number: 5,
+                      ),
+                      ManageJobSettingItem(
+                        title: StringConstants.companySave,
+                        icon: IconConstants.icBookMarkCompany,
+                        number: 5,
+                      ),
+                      ManageJobSettingItem(
+                        title: StringConstants.recruiterSee,
+                        icon: IconConstants.icEye,
+                        number: 5,
+                      ),
+                     
+                    ],
+                    // gre
                   ),
                   SizedBox(
                     height: SizeConstants.md.w,
@@ -196,7 +170,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: IconConstants.icLogout,
                     onPressed: () {},
                   ),
-                 
                 ],
               ),
             )

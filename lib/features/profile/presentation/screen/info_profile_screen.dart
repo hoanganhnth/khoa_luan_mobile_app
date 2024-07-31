@@ -38,6 +38,7 @@ class _InfoProfileScreenState extends State<InfoProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarCustom(
+        centerTitle: true,
         showBackArrow: true,
         leadingOnPressed: () => Modular.to.pop(),
         title: const Text(StringConstants.infoProfile),

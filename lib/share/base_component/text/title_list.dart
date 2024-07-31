@@ -19,7 +19,7 @@ class TitleList extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               GestureDetector(
                 onTap: onPressSeeAll,
@@ -27,15 +27,15 @@ class TitleList extends StatelessWidget {
                   StringConstants.seeAll,
                   style: Theme.of(context)
                       .textTheme
-                      .titleMedium
+                      .bodyLarge
                       ?.copyWith(color: Theme.of(context).primaryColor),
                 ),
               )
             ],
           )
         : Text(
-            StringConstants.hintSuitableJob,
-            style: Theme.of(context).textTheme.headlineSmall,
+            title,
+            style: Theme.of(context).textTheme.titleMedium,
           );
   }
 }

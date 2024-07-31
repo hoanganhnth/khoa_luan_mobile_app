@@ -1,4 +1,5 @@
 import 'package:app_flutter/features/main/presentation/widget/info_job_row.dart';
+import 'package:app_flutter/share/base_component/text/title_list.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/constants/string_constants.dart';
@@ -19,9 +20,8 @@ class InfoComapnyTabView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Lich viet",
-              style: Theme.of(context).textTheme.titleMedium,
+            const TitleList(
+              title: "Lich viet",
             ),
             SizedBox(
               height: SizeConstants.md.w,
@@ -37,9 +37,9 @@ class InfoComapnyTabView extends StatelessWidget {
               title: StringConstants.websiteCompany,
             ),
             //  SizedBox(height:SizeConstants.md.w,),
-            Text(
-              StringConstants.introduceCompany,
-              style: Theme.of(context).textTheme.titleMedium,
+
+            const TitleList(
+              title: StringConstants.introduceCompany,
             ),
             SizedBox(
               height: SizeConstants.sm.w,

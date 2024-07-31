@@ -11,4 +11,6 @@ class AppConstants {
   static String contentMultipartTypeValue = 'multipart/form-data';
   static String appKey = 'appKey';
   static String APP_KEY = 'Ydfa76f765SA46HAA56sHFDMF8K4S5IK';
+
+  static const String sizeFileLimit = '5MB';
 }

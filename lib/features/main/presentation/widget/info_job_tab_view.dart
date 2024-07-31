@@ -1,5 +1,6 @@
 import 'package:app_flutter/features/main/data/model/job_model.dart';
 import 'package:app_flutter/features/main/presentation/widget/info_job_row.dart';
+import 'package:app_flutter/share/base_component/text/title_list.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/constants/string_constants.dart';
@@ -25,9 +26,8 @@ class InfoJobTabView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  StringConstants.infoShare,
-                  style: Theme.of(context).textTheme.titleMedium,
+                const TitleList(
+                  title: StringConstants.infoShare,
                 ),
                 SizedBox(
                   height: SizeConstants.md.w,
@@ -56,9 +56,8 @@ class InfoJobTabView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  StringConstants.descriptionJob,
-                  style: Theme.of(context).textTheme.titleMedium,
+                const TitleList(
+                  title: StringConstants.descriptionJob,
                 ),
                 SizedBox(
                   height: SizeConstants.sm.w,
@@ -72,9 +71,8 @@ class InfoJobTabView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    StringConstants.requireCandidate,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  const TitleList(
+                    title: StringConstants.requireCandidate,
                   ),
                   SizedBox(
                     height: SizeConstants.sm.w,
@@ -89,9 +87,8 @@ class InfoJobTabView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    StringConstants.benefit,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  const TitleList(
+                    title: StringConstants.benefit,
                   ),
                   SizedBox(
                     height: SizeConstants.sm.w,
@@ -105,9 +102,8 @@ class InfoJobTabView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    StringConstants.timeWork,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  const TitleList(
+                    title: StringConstants.timeWork,
                   ),
                   SizedBox(
                     height: SizeConstants.sm.w,
