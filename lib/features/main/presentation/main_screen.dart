@@ -1,4 +1,5 @@
 import 'package:app_flutter/features/main/presentation/screen/home_screen.dart';
+import 'package:app_flutter/features/profile/presentation/screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -22,11 +23,7 @@ class _MainScreenState extends State<MainScreen> {
       width: double.infinity,
       height: double.infinity,
     ),
-    Container(
-      color: Colors.pink,
-      width: double.infinity,
-      height: double.infinity,
-    ),
+   const ProfileScreen()
   ];
   List<String> titles = ["Trang chủ", "Liên hệ", "Ưa thích", "Tài khoản"];
   ValueNotifier<int> indexSelect = ValueNotifier(0);

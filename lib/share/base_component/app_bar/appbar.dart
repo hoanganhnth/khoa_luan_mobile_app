@@ -10,13 +10,14 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
       this.showBackArrow = false,
       this.leadingIcon,
       this.action,
-      this.leadingOnPressed});
+      this.leadingOnPressed,  this.centerTitle = false});
 
   final Widget? title;
   final bool showBackArrow;
   final Widget? leadingIcon;
   final List<Widget>? action;
   final VoidCallback? leadingOnPressed;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: AppBar(
         automaticallyImplyLeading: false,
-        
+        centerTitle: centerTitle,
         leading: showBackArrow
             ? IconButton(
                 onPressed: leadingOnPressed,

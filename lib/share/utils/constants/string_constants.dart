@@ -42,5 +42,35 @@ class StringConstants {
   static const String addressCompany = "Địa chỉ công ty";
   static const String websiteCompany = "Website công ty";
   static const String introduceCompany = "Giới thiệu công ty";
+  static const String manageFindJob = "Quản lý tìm việc";
+  static const String jobApply = "Việc làm đã ứng tuyển";
+  static const String jobSave = "Việc làm đã lưu";
+  static const String jobSuit = "Việc làm phù hợp";
+  static const String companySave = "Công ty đang theo dõi";
+  static const String recruiterSee = "NTD đã xem hồ sơ";
+  static const String infoProfile = "Thông tin cá nhân";
+  static const String setting = "Cài đặt khác";
+  static const String changePassword = "Đổi mật khẩu";
+  static const String logout = "Đăng xuất";
+  static const String male = "Nam";
+
+  static const String female = "Nữ";
+
+  static const String other = "Khác";
+  static const String apply = "Ứng tuyển";
+  static const String cvApply = "CV ứng tuyển";
+  static const String myCv = "CV của tôi";
+  static const String uploadCv = "Upload CV";
+  static const String seeCv = "Xem CV";
+  static const String clickToUpload = "Bấm để tải lên";
+  static const String supportPdf =
+      "Hỗ trợ định dạng pdf, doc có \nkích thước dưới ";
+  static const String letterIntroduce = "Thư giới thiệu";
+  static const String introduceMySelf = "Viết giới thiệu ngắn gọn về bản thân";
+  static const String company = "Công ty";
+  static const String job = "Vị trí";
+  static const String applyAt = "Ứng tuyển lúc";
+    static const String continueApply = "Tiếp tục ứng tuyển";
+
 
 }
