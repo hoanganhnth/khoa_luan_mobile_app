@@ -1,4 +1,6 @@
 class StringConstants {
+  static const String accessToken = "access_token";
+
   static const String email = "Email";
   static const String password = "Mật khẩu";
   static const String passwordAgain = "Nhập lại mật khẩu";
