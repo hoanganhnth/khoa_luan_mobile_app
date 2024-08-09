@@ -4,6 +4,7 @@ import 'package:app_flutter/features/main/presentation/widget/info_job_column.da
 import 'package:app_flutter/features/main/presentation/widget/info_job_tab_view.dart';
 import 'package:app_flutter/share/base_component/app_bar/appbar.dart';
 import 'package:app_flutter/share/base_component/app_bar/tabbar.dart';
+import 'package:app_flutter/share/base_component/button/custom_button.dart';
 import 'package:app_flutter/share/base_component/container/circular_container.dart';
 import 'package:app_flutter/share/base_component/image/image_container.dart';
 import 'package:app_flutter/share/utils/constants/app_constants.dart';
@@ -101,19 +102,14 @@ class _DetailJobScreenState extends State<DetailJobScreen> {
               SizedBox(
                 width: SizeConstants.md.w,
               ),
-              Container(
+              CustomButton(
                 height: 42.w,
                 width: 320.w,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius:
-                        BorderRadius.circular(SizeConstants.borderRadiusMd.w)),
-                child: Center(
-                  child: Text(StringConstants.applyNow,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: ColorConstants.white,
-                          )),
-                ),
+                title: StringConstants.applyNow,
+                onPressed: () {
+                  Modular.to.pushNamed("/apply_job",
+                      arguments: {"job_id": widget.jobModel.id});
+                },
               )
             ],
           ),
@@ -314,9 +310,13 @@ class _DetailJobScreenState extends State<DetailJobScreen> {
                     if (!value) {
                       return const SizedBox();
                     }
-                    return Icon(Iconsax.arrow_left,
-                        color:
-                            dark ? ColorConstants.white : ColorConstants.black);
+                    return InkWell(
+                      onTap: () => Modular.to.pop(),
+                      child: Icon(Iconsax.arrow_left,
+                          color: dark
+                              ? ColorConstants.white
+                              : ColorConstants.black),
+                    );
                   },
                 ),
                 bottom: TTaBar(

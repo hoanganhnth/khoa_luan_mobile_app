@@ -64,7 +64,7 @@ class TValidator {
     return null;
   }
 
-  bool isNullOrEmpty(var object) {
+  static bool isNullOrEmpty(var object) {
     if (object == false ||
         object == 'false' ||
         object == 'null' ||
@@ -80,7 +80,7 @@ class TValidator {
     return false;
   }
 
-  bool isNotNullOrEmpty(var object) {
+  static bool isNotNullOrEmpty(var object) {
     return !isNullOrEmpty(object);
   }
 // Add more custom validators as needed for your specific requirements.
