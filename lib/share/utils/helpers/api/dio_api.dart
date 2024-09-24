@@ -1,18 +1,14 @@
-import 'dart:io';
 
-import 'package:app_flutter/share/utils/constants/app_constants.dart';
 import 'package:app_flutter/share/utils/exceptions/base_error.dart';
 import 'package:app_flutter/share/utils/exceptions/no_network_exception.dart';
 import 'package:app_flutter/share/utils/interceptor/session_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 bool refreshing = false;
 
-String BASE_URL_PROD = 'http://payment.api.deltago.com';
-String BASE_URL_DEV = 'http://payment.api.deltago.com';
+String baseUrlProd = 'http://payment.api.deltago.com';
+String baseUrlDev = 'http://payment.api.deltago.com';
 
 class EnvConfig {
   EnvConfig({
@@ -23,10 +19,10 @@ class EnvConfig {
 
 Map<String, EnvConfig> envConfigs = {
   'PROD': EnvConfig(
-    baseUrl: BASE_URL_PROD,
+    baseUrl: baseUrlProd,
   ),
   'DEV': EnvConfig(
-    baseUrl: BASE_URL_DEV,
+    baseUrl: baseUrlDev,
   )
 };
 

@@ -72,7 +72,7 @@ class StringConstants {
   static const String company = "Công ty";
   static const String job = "Vị trí";
   static const String applyAt = "Ứng tuyển lúc";
-    static const String continueApply = "Tiếp tục ứng tuyển";
-
-
+  static const String continueApply = "Tiếp tục ứng tuyển";
+  static const String loginSuccess = "Đăng nhập thành công";
+  static const String signupSuccess = "Đăng ký thành công";
 }

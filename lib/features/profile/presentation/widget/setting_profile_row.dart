@@ -1,6 +1,5 @@
 import 'package:app_flutter/share/utils/constants/colors.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
-import 'package:app_flutter/share/utils/constants/string_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

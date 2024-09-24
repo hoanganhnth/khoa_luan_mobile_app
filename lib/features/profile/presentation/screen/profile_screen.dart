@@ -1,6 +1,5 @@
 import 'package:app_flutter/features/profile/presentation/widget/manage_job_item.dart';
 import 'package:app_flutter/features/profile/presentation/widget/setting_profile_row.dart';
-import 'package:app_flutter/share/utils/constants/colors.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
 import 'package:app_flutter/share/utils/constants/image_constants.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
@@ -9,7 +8,6 @@ import 'package:app_flutter/share/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -21,7 +19,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    final dark = DeviceUtils.isDarkMode(context);
+    // final dark = DeviceUtils.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -168,7 +166,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SettingProfileRow(
                     title: StringConstants.logout,
                     icon: IconConstants.icLogout,
-                    onPressed: () {},
+                    onPressed: () {
+                      Modular.to.navigate('/');
+                    },
                   ),
                 ],
               ),

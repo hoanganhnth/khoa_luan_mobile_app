@@ -1,8 +1,11 @@
-import 'package:app_flutter/features/authentication/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/authentication/bloc/user/sign_in_cubit.dart';
 import 'package:app_flutter/features/authentication/presentation/widget/login_form.dart';
 import 'package:app_flutter/features/authentication/presentation/widget/login_header.dart';
+import 'package:app_flutter/share/base_component/app_toast/app_toast.dart';
+import 'package:app_flutter/share/base_component/app_toast/src/model/data_alert.dart';
 import 'package:app_flutter/share/base_component/loading/custom_loading.dart';
 import 'package:app_flutter/share/base_component/style/spacing_style.dart';
+import 'package:app_flutter/share/utils/constants/string_constants.dart';
 import 'package:app_flutter/share/utils/cubit/loading_status.dart';
 import 'package:app_flutter/share/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +21,15 @@ class SignInScreen extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: BlocConsumer<UserCubit, UserState>(
-        listener: (BuildContext context, UserState state) {
+      body: BlocConsumer<SignInCubit, SignInState>(
+        listener: (BuildContext context, SignInState state) {
           if (state.status == LoadingStatus.success) {
-            Modular.to.pushNamed("/home/");
+            Modular.to.navigate("/home/");
+            AppToast.share.showToast(StringConstants.loginSuccess,
+                type: ToastType.success);
           }
         },
-        bloc: Modular.get<UserCubit>(),
+        bloc: Modular.get<SignInCubit>(),
         builder: (context, state) {
           if (state.status == LoadingStatus.loading) {
             return const CustomLoading();

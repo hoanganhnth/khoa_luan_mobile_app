@@ -61,5 +61,46 @@ class DummyData {
 
     // Add more JobModel objects as needed
   ];
-  
+  static List<Map<String, dynamic>> jsonCompany = [
+    {
+      'id': 1,
+      'name': 'Company A',
+      'address': '123 Main Street, City, Country',
+      'phone': '+1234567890',
+      'image_url': 'https://example.com/images/company-a.png',
+      'email': 'contact@companya.com',
+      'status': 'accept',
+      'code_tax': 'TAX123456'
+    },
+    {
+      'id': 2,
+      'name': 'Company B',
+      'address': '456 Elm Street, City, Country',
+      'phone': '+0987654321',
+      'image_url': 'https://example.com/images/company-b.png',
+      'email': 'info@companyb.com',
+      'status': 'pending',
+      'code_tax': 'TAX654321'
+    },
+    {
+      'id': 3,
+      'name': 'Company C',
+      'address': '789 Oak Street, City, Country',
+      'phone': '+1122334455',
+      'image_url': 'https://example.com/images/company-c.png',
+      'email': 'hello@companyc.com',
+      'status': 'reject',
+      'code_tax': 'TAX789012'
+    },
+    {
+      'id': 4,
+      'name': 'Company D',
+      'address': '101 Pine Street, City, Country',
+      'phone': '+2233445566',
+      'image_url': 'https://example.com/images/company-d.png',
+      'email': 'contact@companyd.com',
+      'status': 'accept',
+      'code_tax': 'TAX345678'
+    }
+  ];
 }

@@ -13,4 +13,8 @@ class AppConstants {
   static String APP_KEY = 'Ydfa76f765SA46HAA56sHFDMF8K4S5IK';
 
   static const String sizeFileLimit = '5MB';
+
+  static const String password = "password";
+  static const String email = "email";
+  static const String keySavePass = "save_pass_word";
 }

@@ -10,7 +10,6 @@ import 'package:app_flutter/share/utils/constants/string_constants.dart';
 import 'package:app_flutter/share/utils/validators/validation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';

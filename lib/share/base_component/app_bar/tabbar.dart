@@ -3,7 +3,7 @@ import 'package:app_flutter/share/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 
 class TTaBar extends StatelessWidget implements PreferredSizeWidget{
-  const TTaBar({Key? key, required this.tabs}) : super(key: key);
+  const TTaBar({super.key, required this.tabs});
 
   final List<Widget> tabs;
 
@@ -25,6 +25,5 @@ class TTaBar extends StatelessWidget implements PreferredSizeWidget{
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(DeviceUtils.getAppBarHeight());
 }

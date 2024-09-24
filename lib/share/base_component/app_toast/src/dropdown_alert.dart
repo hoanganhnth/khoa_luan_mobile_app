@@ -60,7 +60,7 @@ class DropdownAlert extends StatefulWidget {
   final AlertPosition? position;
 
   const DropdownAlert(
-      {Key? key,
+      {super.key,
       this.onTap,
       this.successImage,
       this.warningImage,
@@ -77,8 +77,7 @@ class DropdownAlert extends StatefulWidget {
       this.delayDismiss,
       this.avoidBottomInset = false,
       this.showCloseButton,
-      this.position = AlertPosition.TOP})
-      : super(key: key);
+      this.position = AlertPosition.TOP});
 
   @override
   DropdownAlertWidget createState() => DropdownAlertWidget();

@@ -1,4 +1,5 @@
 import 'package:app_flutter/features/main/data/model/cv_model.dart';
+import 'package:app_flutter/navigate/router.dart';
 import 'package:app_flutter/share/base_component/app_bar/appbar.dart';
 import 'package:app_flutter/share/base_component/button/custom_button.dart';
 import 'package:app_flutter/share/base_component/container/selected_container.dart';
@@ -33,7 +34,7 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
   TextEditingController letterController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final dark = DeviceUtils.isDarkMode(context);
+    // final dark = DeviceUtils.isDarkMode(context);
     final paddingBottom = DeviceUtils.getPaddingBottom(context);
     return Scaffold(
       appBar: AppBarCustom(
@@ -66,13 +67,12 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
             width: 320.w,
             title: StringConstants.applyNow,
             onPressed: () {
-              Modular.to.pushNamed("/success_apply",
-                  );
-
+              Modular.to.pushNamed(
+                "/success_apply",
+              );
             },
           )),
-      body: 
-      SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: SizeConstants.md.w, vertical: SizeConstants.md.w),
@@ -234,7 +234,6 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
           ),
         ),
       ),
-    
     );
   }
 
@@ -303,13 +302,22 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
                               leading: indexSelected == index
                                   ? const ContainerIconActive()
                                   : const ContainerIconNotActive(),
-                              trailing: Text(
-                                StringConstants.seeCv,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.copyWith(
-                                        color: Theme.of(context).primaryColor),
+                              trailing: InkWell(
+                                onTap: () => Modular.to.pushNamed(
+                                    RouterName.webviewRouter,
+                                    arguments: {
+                                      "url":
+                                          "https://res.cloudinary.com/djnfk8j8v/image/upload/v1727198229/cv/epyfv1dxmminvtzyrscv.pdf"
+                                    }),
+                                child: Text(
+                                  StringConstants.seeCv,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                ),
                               ),
                             ),
                           ),

@@ -2,7 +2,6 @@ import 'package:app_flutter/share/base_component/image/image.dart';
 import 'package:app_flutter/share/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class TextInputWidget extends StatefulWidget {
   final GlobalKey<FormState>? formKey;

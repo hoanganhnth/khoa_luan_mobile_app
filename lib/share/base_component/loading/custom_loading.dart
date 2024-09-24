@@ -8,8 +8,6 @@ class CustomLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: const Color(0xffe3f9ff),
-      child: Center(child: Lottie.asset(AnimationConstants.aniLoading, width: 250.w, height: 250.w),));
+    return Center(child: Lottie.asset(AnimationConstants.aniLoading, width: 250.w, height: 250.w),);
   }
 }

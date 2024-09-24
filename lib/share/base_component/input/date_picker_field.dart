@@ -10,8 +10,7 @@ class DatePickerField extends StatefulWidget {
   final Function(String)? onChanged;
   final String value;
 
-  DatePickerField({Key? key, this.onChanged, required this.value})
-      : super(key: key);
+  const DatePickerField({super.key, this.onChanged, required this.value});
 
   @override
   State<DatePickerField> createState() => _DatePickerFieldState();
@@ -29,7 +28,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
           int.parse(dateList[0]));
     } catch (e) {
       // Handle parsing error (e.g., if the format is not as expected)
-      print("Error parsing date: ${widget.value}");
+      // print("Error parsing date: ${widget.value}");
       _selectedDate =
           DateTime(2000); // Set a default date or handle it as needed
     }

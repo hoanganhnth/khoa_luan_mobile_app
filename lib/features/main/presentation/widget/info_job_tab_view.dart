@@ -36,8 +36,8 @@ class InfoJobTabView extends StatelessWidget {
                     content: '1 năm',
                     icon: IconConstants.icStar,
                     title: StringConstants.experience),
-                const InfoShareRow(
-                  content: "3 thành viên",
+                 InfoShareRow(
+                  content: "${jobModel.numberCandidates} thành viên",
                   icon: IconConstants.icMember,
                   title: StringConstants.numberRequire,
                 ),
@@ -62,7 +62,7 @@ class InfoJobTabView extends StatelessWidget {
                 SizedBox(
                   height: SizeConstants.sm.w,
                 ),
-                Text(
+                const Text(
                     "- Flutter Development: Lead the development of our compliance management mobile app using Flutter, adhering to best practices for performance, code quality, and maintainability.\n- UI/UX Implementation: Translate designs and wireframes into high-quality, user-friendly interfaces, with a focus on creating an exceptional user experience.\n- State Management: Implement efficient state management solutions (e.g., BLoC, Provider, Riverpod) to manage the application's data flow and responsiveness.\n- App Store Deployment: Manage the process of publishing the app to both the Apple App Store and Google Play Store, ensuring compliance with all guidelines and requirements.\n- Performance Optimization: Optimize the app's performance by identifying and addressing bottlenecks, ensuring a smooth and responsive user experience.\n- Monitoring and Tracking: Implement tracking and monitoring mechanisms to collect user data, track app usage, and analyze crash reports to identify and resolve issues.\n- Testing: Write unit, widget, and integration tests to ensure the app's stability and functionality across different devices and platforms.\n- Firebase Integration: Leverage Firebase services (e.g., Notifications, Remote Config) to enhance the app's functionality and user engagement.\n- AWS Integration: Integrate with AWS services like Amplify, Cognito, Lambda, and S3, for authentication, storage, and backend functionality.")
               ],
             ),
@@ -77,7 +77,7 @@ class InfoJobTabView extends StatelessWidget {
                   SizedBox(
                     height: SizeConstants.sm.w,
                   ),
-                  Text(
+                  const Text(
                       "- Flutter Development: Lead the development of our compliance management mobile app using Flutter, adhering to best practices for performance, code quality, and maintainability.\n- UI/UX Implementation: Translate designs and wireframes into high-quality, user-friendly interfaces, with a focus on creating an exceptional user experience.\n- State Management: Implement efficient state management solutions (e.g., BLoC, Provider, Riverpod) to manage the application's data flow and responsiveness.\n- App Store Deployment: Manage the process of publishing the app to both the Apple App Store and Google Play Store, ensuring compliance with all guidelines and requirements.\n- Performance Optimization: Optimize the app's performance by identifying and addressing bottlenecks, ensuring a smooth and responsive user experience.")
                 ],
               ),

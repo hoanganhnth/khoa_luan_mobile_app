@@ -1,3 +1,4 @@
+import 'package:app_flutter/features/main/data/model/company_model.dart';
 import 'package:app_flutter/features/main/presentation/widget/info_job_row.dart';
 import 'package:app_flutter/share/base_component/text/title_list.dart';
 import 'package:app_flutter/share/utils/constants/icon_constants.dart';
@@ -9,7 +10,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class InfoComapnyTabView extends StatelessWidget {
   const InfoComapnyTabView({
     super.key,
+    required this.companyModel,
   });
+  final CompanyModel companyModel;
 
   @override
   Widget build(BuildContext context) {

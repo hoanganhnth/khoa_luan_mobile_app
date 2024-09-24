@@ -1,4 +1,4 @@
-import 'package:app_flutter/features/authentication/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/authentication/bloc/user/sign_in_cubit.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/constants/string_constants.dart';
 import 'package:app_flutter/share/utils/validators/validation.dart';
@@ -21,11 +21,26 @@ class _TLoginFormState extends State<TLoginForm> {
   ValueNotifier<bool> showPassword = ValueNotifier(false);
   ValueNotifier<bool> rememberPassword = ValueNotifier(false);
   final _formKey = GlobalKey<FormState>();
+  late SignInCubit userCubit;
   void login() {
     if (_formKey.currentState?.validate() ?? false) {
-      Modular.get<UserCubit>()
-          .login(emailController.text, passwordController.text);
+      userCubit.login(emailController.text, passwordController.text,
+          rememberPassword.value);
     }
+  }
+
+  @override
+  void initState() {
+    userCubit = Modular.get<SignInCubit>();
+    rememberPassword.value = userCubit.checkSavePassword();
+
+    if (rememberPassword.value) {
+      final data = userCubit.getSavePassword();
+      emailController.text = data[0];
+      passwordController.text = data[1];
+      showPassword.value = false;
+    }
+    super.initState();
   }
 
   @override
@@ -52,7 +67,7 @@ class _TLoginFormState extends State<TLoginForm> {
                 builder: (BuildContext context, bool value, Widget? child) {
                   return TextFormField(
                     controller: passwordController,
-                    obscureText: showPassword.value,
+                    obscureText: !showPassword.value,
                     validator: (value) =>
                         TValidator.validateEmptyText('Password', value),
                     decoration: InputDecoration(
@@ -82,7 +97,8 @@ class _TLoginFormState extends State<TLoginForm> {
                             (BuildContext context, bool value, Widget? child) {
                           return Checkbox(
                               value: value,
-                              onChanged: (val) => showPassword.value = !value);
+                              onChanged: (val) =>
+                                  rememberPassword.value = !value);
                         },
                       ),
                       const Text(StringConstants.rememberMe)
@@ -102,7 +118,6 @@ class _TLoginFormState extends State<TLoginForm> {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        
                         login();
                       },
                       child: const Text(StringConstants.signIn))),

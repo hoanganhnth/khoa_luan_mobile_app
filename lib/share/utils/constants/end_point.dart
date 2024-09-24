@@ -8,5 +8,6 @@ class EndPoints {
   static const String getCompayny = "/api/company/get-company";
   static const String getProfile = "/api/user/get-profile";
   static const String updateProfile = "/api/user/update-profile";
-
+  static const String detailJob = "/api/job/detail-job";
+  static const String getCompany = "/api/company/get-company";
 }

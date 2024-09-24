@@ -1,3 +1,4 @@
+import 'package:app_flutter/features/profile/bloc/cubit/user_cubit.dart';
 import 'package:app_flutter/navigate/module_navigate.dart';
 import 'package:app_flutter/share/base_component/app_toast/app_toast.dart';
 import 'package:app_flutter/share/utils/constants/app_constants.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   final sf = await SharedPreferences.getInstance();
 
   runApp(ModularApp(module: AppModule(sf), child: const MainApp()));
@@ -29,6 +30,9 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Modular.get<DioApi>().init();
+      Modular.get<UserCubit>().getProfile(onFinishGetUerInfo: () {
+        Modular.to.navigate("/home");
+      });
     });
     super.initState();
   }
