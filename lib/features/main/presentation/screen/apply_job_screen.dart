@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:app_flutter/features/main/data/model/cv_model.dart';
+import 'package:app_flutter/features/profile/cubit/resume/resume_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/upload/upload_cubit.dart';
+import 'package:app_flutter/features/profile/data/model/resume_model.dart';
 import 'package:app_flutter/navigate/router.dart';
 import 'package:app_flutter/share/base_component/app_bar/appbar.dart';
 import 'package:app_flutter/share/base_component/button/custom_button.dart';
@@ -11,12 +16,17 @@ import 'package:app_flutter/share/utils/constants/image_constants.dart';
 import 'package:app_flutter/share/utils/constants/sizes.dart';
 import 'package:app_flutter/share/utils/constants/string_constants.dart';
 import 'package:app_flutter/share/utils/device/device_utility.dart';
+import 'package:app_flutter/share/utils/formatters/formatter.dart';
 import 'package:app_flutter/share/utils/validators/validation.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:path/path.dart' as path;
 
 enum TypeSelectCV { none, myCV, upload }
 
@@ -32,6 +42,16 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
   ValueNotifier<TypeSelectCV> typeSelected = ValueNotifier(TypeSelectCV.none);
   ValueNotifier<int> indexSelectedjob = ValueNotifier(0);
   TextEditingController letterController = TextEditingController();
+  late ResumeCubit resumeCubit;
+  late UploadCubit uploadCubit;
+  File? file = null;
+  @override
+  void initState() {
+    resumeCubit = Modular.get<ResumeCubit>();
+    uploadCubit = Modular.get<UploadCubit>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // final dark = DeviceUtils.isDarkMode(context);
@@ -85,111 +105,145 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
               SizedBox(
                 height: SizeConstants.md.w,
               ),
-              ValueListenableBuilder(
-                valueListenable: typeSelected,
-                builder:
-                    (BuildContext context, TypeSelectCV value, Widget? child) {
-                  return SelectedContainer(
-                    title: StringConstants.myCv,
-                    selected: value == TypeSelectCV.myCV,
-                    onPressed: (val) {
-                      typeSelected.value = TypeSelectCV.myCV;
-                    },
-                    expandWidget: GestureDetector(
-                      onTap: () => showListCV(context, indexSelectedjob.value),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: SizeConstants.md.w,
-                            vertical: SizeConstants.sm.w),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: ColorConstants.grey),
-                            borderRadius: BorderRadius.circular(
-                                SizeConstants.borderRadiusMd.w)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ValueListenableBuilder(
-                              valueListenable: indexSelectedjob,
-                              builder: (BuildContext context, int value,
-                                  Widget? child) {
-                                return Text(
-                                  listCvs[value].title ?? "",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                );
-                              },
+              BlocBuilder<ResumeCubit, ResumeState>(
+                bloc: resumeCubit,
+                builder: (context, state) {
+                  return ValueListenableBuilder(
+                    valueListenable: typeSelected,
+                    builder: (BuildContext context, TypeSelectCV value,
+                        Widget? child) {
+                      return SelectedContainer(
+                        title: StringConstants.myCv,
+                        selected: value == TypeSelectCV.myCV,
+                        onPressed: (val) {
+                          typeSelected.value = TypeSelectCV.myCV;
+                        },
+                        expandWidget: GestureDetector(
+                          onTap: () => showListCV(context,
+                              indexSelectedjob.value, state.resumes ?? []),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: SizeConstants.md.w,
+                                vertical: SizeConstants.sm.w),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: ColorConstants.grey),
+                                borderRadius: BorderRadius.circular(
+                                    SizeConstants.borderRadiusMd.w)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ValueListenableBuilder(
+                                  valueListenable: indexSelectedjob,
+                                  builder: (BuildContext context, int value,
+                                      Widget? child) {
+                                    return Text(
+                                      resumeCubit.state.resumes?[value]
+                                              .resumeName ??
+                                          "",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    );
+                                  },
+                                ),
+                                SvgPicture.asset(
+                                  IconConstants.icArrowDown,
+                                  width: 12.w,
+                                  height: 12.w,
+                                )
+                              ],
                             ),
-                            SvgPicture.asset(
-                              IconConstants.icArrowDown,
-                              width: 12.w,
-                              height: 12.w,
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
               ),
               SizedBox(
                 height: SizeConstants.md.w,
               ),
-              ValueListenableBuilder(
-                valueListenable: typeSelected,
-                builder:
-                    (BuildContext context, TypeSelectCV value, Widget? child) {
-                  return SelectedContainer(
-                    title: StringConstants.uploadCv,
-                    selected: value == TypeSelectCV.upload,
-                    onPressed: (val) {
-                      typeSelected.value = TypeSelectCV.upload;
-                    },
-                    expandWidget: DottedBorder(
-                      borderType: BorderType.RRect,
-                      color: Theme.of(context).primaryColor,
-                      radius: Radius.circular(SizeConstants.borderRadiusMd.w),
-                      padding: EdgeInsets.all(SizeConstants.md.w),
-                      child: Container(
-                        color: ColorConstants.white,
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              ImageConstants.imgUpload,
-                              width: 80.w,
-                              height: 80.w,
-                              fit: BoxFit.contain,
-                            ),
-                            SizedBox(
-                              height: SizeConstants.md.w,
-                            ),
-                            Text(
-                              StringConstants.clickToUpload,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            SizedBox(
-                              height: SizeConstants.md.w,
-                            ),
-                            RichText(
-                              textAlign: TextAlign.center,
-                              text: TextSpan(
-                                text: StringConstants.supportPdf,
-                                style: DefaultTextStyle.of(context)
-                                    .style, // Sử dụng kiểu văn bản mặc định
-                                children: const <TextSpan>[
-                                  TextSpan(
-                                    text: AppConstants.sizeFileLimit,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+              BlocConsumer<UploadCubit, UploadState>(
+                bloc: uploadCubit,
+                builder: (BuildContext context, UploadState state) {
+                  return ValueListenableBuilder(
+                    valueListenable: typeSelected,
+                    builder: (BuildContext context, TypeSelectCV value,
+                        Widget? child) {
+                      return SelectedContainer(
+                        title: StringConstants.uploadCv,
+                        selected: value == TypeSelectCV.upload,
+                        onPressed: (val) {
+                          typeSelected.value = TypeSelectCV.upload;
+                        },
+                        expandWidget: InkWell(
+                          onTap: () => openFilePicker(),
+                          child: DottedBorder(
+                            borderType: BorderType.RRect,
+                            color: Theme.of(context).primaryColor,
+                            radius:
+                                Radius.circular(SizeConstants.borderRadiusMd.w),
+                            padding: EdgeInsets.all(SizeConstants.md.w),
+                            child: Container(
+                              color: ColorConstants.white,
+                              width: double.infinity,
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    ImageConstants.imgUpload,
+                                    width: 80.w,
+                                    height: 80.w,
+                                    fit: BoxFit.contain,
                                   ),
+                                  SizedBox(
+                                    height: SizeConstants.md.w,
+                                  ),
+                                  if (file != null)
+                                    Text(path.basename(file!.path),
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            DefaultTextStyle.of(context).style),
+                                  if (file == null)
+                                    Column(
+                                      children: [
+                                        Text(
+                                          StringConstants.clickToUpload,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge,
+                                        ),
+                                        SizedBox(
+                                          height: SizeConstants.md.w,
+                                        ),
+                                        RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                            text: StringConstants.supportPdf,
+                                            style: DefaultTextStyle.of(context)
+                                                .style, // Sử dụng kiểu văn bản mặc định
+                                            children: const <TextSpan>[
+                                              TextSpan(
+                                                text:
+                                                    AppConstants.sizeFileLimit,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )
                                 ],
                               ),
-                            )
-                          ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
+                listener: (BuildContext context, UploadState state) {},
               ),
               SizedBox(
                 height: SizeConstants.md.w,
@@ -237,14 +291,24 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
     );
   }
 
-  List<CVModel> listCvs = [
-    CVModel(title: "CV 1", createdAt: "22/5/2001", updatedAt: "22/36/2001"),
-    CVModel(title: "CV 2", createdAt: "22/5/2001", updatedAt: "22/36/2001"),
-    CVModel(title: "CV 3", createdAt: "22/5/2001", updatedAt: "22/36/2001"),
-    CVModel(title: "CV 4", createdAt: "22/5/2001", updatedAt: "22/36/2001"),
-    CVModel(title: "CV 5", createdAt: "22/5/2001", updatedAt: "22/36/2001"),
-  ];
-  void showListCV(BuildContext context, int indexSelected) async {
+  void openFilePicker() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
+      if (result != null) {
+        file = File(result.files.single.path!);
+        uploadCubit.uploadFile(file!);
+      } else {
+        // User canceled the picker
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  void showListCV(BuildContext context, int indexSelected,
+      List<ResumeModel> resumes) async {
     showModalBottomSheet(
       context: context,
       showDragHandle: false,
@@ -273,7 +337,7 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: listCvs.length,
+                      itemCount: resumes.length,
                       controller: scrollController,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
@@ -292,11 +356,11 @@ class _ApplyJobScreenState extends State<ApplyJobScreen> {
                             },
                             child: ListTile(
                               title: Text(
-                                listCvs[index].title ?? '',
+                                resumes[index].resumeName ?? '',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               subtitle: Text(
-                                'Cập nhật lần cuối: ${listCvs[index].createdAt}',
+                                'Cập nhật lần cuối: ${Formatter.formatDate1(resumes[index].createAt ?? "")}',
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               leading: indexSelected == index

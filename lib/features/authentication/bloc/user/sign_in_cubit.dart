@@ -1,6 +1,6 @@
 import 'package:app_flutter/features/authentication/data/datasource/authen_local_datasourse.dart';
 import 'package:app_flutter/features/authentication/data/datasource/authen_remote_datasourse.dart';
-import 'package:app_flutter/features/profile/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/user/user_cubit.dart';
 import 'package:app_flutter/features/profile/data/model/profile_model.dart';
 import 'package:app_flutter/features/profile/data/model/user_model.dart';
 import 'package:app_flutter/share/utils/cubit/loading_status.dart';

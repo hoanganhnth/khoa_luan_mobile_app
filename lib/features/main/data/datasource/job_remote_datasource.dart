@@ -40,4 +40,17 @@ class JobRemoteDatasource {
     // return response;
     // return response;
   }
+  Future<dynamic> applyForJob(int jobId, String coverLetter, String resumeUrl,
+      String emailCandidate) async {
+    Map<String, dynamic> param = HashMap();
+    param.putIfAbsent("job_id", () => jobId);
+    param.putIfAbsent("cover_letter", () => coverLetter);
+    param.putIfAbsent("resume_url", () => resumeUrl);
+    param.putIfAbsent("email_candidate", () => emailCandidate);
+    final response = await DioApi.post(
+      EndPoints.applyForJob,
+    );
+
+    return response;
+  }
 }

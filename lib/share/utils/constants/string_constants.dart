@@ -66,7 +66,7 @@ class StringConstants {
   static const String seeCv = "Xem CV";
   static const String clickToUpload = "Bấm để tải lên";
   static const String supportPdf =
-      "Hỗ trợ định dạng pdf, doc có \nkích thước dưới ";
+      "Hỗ trợ định dạng pdf có \nkích thước dưới ";
   static const String letterIntroduce = "Thư giới thiệu";
   static const String introduceMySelf = "Viết giới thiệu ngắn gọn về bản thân";
   static const String company = "Công ty";
@@ -75,4 +75,5 @@ class StringConstants {
   static const String continueApply = "Tiếp tục ứng tuyển";
   static const String loginSuccess = "Đăng nhập thành công";
   static const String signupSuccess = "Đăng ký thành công";
+
 }

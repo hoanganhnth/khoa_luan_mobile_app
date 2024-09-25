@@ -5,6 +5,7 @@ import 'package:app_flutter/features/authentication/data/datasource/authen_remot
 import 'package:app_flutter/features/authentication/presentation/screen/login_screen.dart';
 import 'package:app_flutter/features/authentication/presentation/screen/signup_sceen.dart';
 import 'package:app_flutter/features/main/bloc/all_job/all_job_cubit.dart';
+import 'package:app_flutter/features/main/bloc/apply_for_job/apply_for_job_cubit.dart';
 import 'package:app_flutter/features/main/bloc/company/company_cubit.dart';
 import 'package:app_flutter/features/main/bloc/detail_job/detail_job_cubit.dart';
 import 'package:app_flutter/features/main/data/datasource/job_remote_datasource.dart';
@@ -14,7 +15,9 @@ import 'package:app_flutter/features/main/presentation/screen/apply_job_screen.d
 import 'package:app_flutter/features/main/presentation/screen/apply_job_success.dart';
 import 'package:app_flutter/features/main/presentation/screen/detail_job_screen.dart';
 import 'package:app_flutter/features/main/presentation/splash_sceen.dart';
-import 'package:app_flutter/features/profile/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/resume/resume_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/upload/upload_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/user/user_cubit.dart';
 import 'package:app_flutter/features/profile/data/datasource/user_remote_datasource.dart';
 import 'package:app_flutter/features/profile/presentation/screen/info_profile_screen.dart';
 import 'package:app_flutter/features/profile/presentation/screen/profile_screen.dart';
@@ -49,6 +52,11 @@ class AppModule extends Module {
     i.addLazySingleton(() => UserCubit(
           Modular.get<UserRemoteDataSource>(),
         ));
+    i.addLazySingleton(() => ResumeCubit(Modular.get<UserRemoteDataSource>()));
+    i.add(() => UploadCubit(
+          Modular.get<UserRemoteDataSource>(),
+        ));
+
     super.binds(i);
   }
 
@@ -88,6 +96,7 @@ class HomeModule extends Module {
     i.addLazySingleton(() => AllJobCubit(Modular.get<JobRemoteDatasource>()));
     i.add(() => DetailJobCubit(Modular.get<JobRemoteDatasource>()));
     i.add(() => CompanyCubit(Modular.get<JobRemoteDatasource>()));
+    i.add(() => ApplyForJobCubit(Modular.get<JobRemoteDatasource>()));
   }
 
   @override

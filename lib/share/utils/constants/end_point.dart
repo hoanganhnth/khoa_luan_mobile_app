@@ -10,4 +10,9 @@ class EndPoints {
   static const String updateProfile = "/api/user/update-profile";
   static const String detailJob = "/api/job/detail-job";
   static const String getCompany = "/api/company/get-company";
+  static const String upload = "/api/upload";
+  static const String getResume = "/api/get-resume";
+  static const String createResume = "/api/user/create-resume";
+  static const String updateResume = "/api/user/update-resume";
+  static const String deleteResume = "/api/user/delete-resume";
 }

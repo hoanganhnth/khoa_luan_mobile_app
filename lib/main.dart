@@ -1,4 +1,5 @@
-import 'package:app_flutter/features/profile/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/resume/resume_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/user/user_cubit.dart';
 import 'package:app_flutter/navigate/module_navigate.dart';
 import 'package:app_flutter/share/base_component/app_toast/app_toast.dart';
 import 'package:app_flutter/share/utils/constants/app_constants.dart';
@@ -33,6 +34,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       Modular.get<UserCubit>().getProfile(onFinishGetUerInfo: () {
         Modular.to.navigate("/home");
       });
+      Modular.get<ResumeCubit>().getResume();
     });
     super.initState();
   }

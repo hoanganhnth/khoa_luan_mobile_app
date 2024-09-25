@@ -1,4 +1,4 @@
-import 'package:app_flutter/features/profile/bloc/cubit/user_cubit.dart';
+import 'package:app_flutter/features/profile/cubit/user/user_cubit.dart';
 import 'package:app_flutter/navigate/router.dart';
 import 'package:app_flutter/share/base_component/loading/custom_loading.dart';
 import 'package:app_flutter/share/utils/cubit/loading_status.dart';

@@ -11,7 +11,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<String> titles = ["Trang chủ", "Cộng đồng", "Ưa thích", "Tài khoản"];
+  List<String> titles = ["Trang chủ", "Cộng đồng", "Cv của tôi", "Tài khoản"];
   ValueNotifier<int> indexSelect = ValueNotifier(0);
 
   @override

@@ -17,4 +17,7 @@ class AppConstants {
   static const String password = "password";
   static const String email = "email";
   static const String keySavePass = "save_pass_word";
+  static const String message = "message";
+  static const String status = "status";
+  static const String data = "data";
 }
